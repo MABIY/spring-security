@@ -1,4 +1,4 @@
-package com.lh.spring.spring.oauth2;
+package com.lh.spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 /**
  * @author liuhua
  */
+
 @SpringBootApplication
-@EnableResourceServer
 public class AuthorizationServerApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
