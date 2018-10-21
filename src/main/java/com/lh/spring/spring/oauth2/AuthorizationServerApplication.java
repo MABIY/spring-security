@@ -5,6 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
+
+/**
+ * @author liuhua
+ */
 @SpringBootApplication
 @EnableResourceServer
 public class AuthorizationServerApplication extends SpringBootServletInitializer {

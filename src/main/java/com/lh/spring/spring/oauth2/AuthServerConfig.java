@@ -7,6 +7,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisPassword;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -22,28 +23,9 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
     private RedisConnectionFactory connectionFactory;
-    // @Bean
-    // public RedisConnectionFactory redisConnectionFactory() {
-    //     JedisConnectionFactory factory = new JedisConnectionFactory();
-    //     factory.setHostName(host);
-    //     factory.setPort(port);
-    //     factory.setPassword(password);
-    //     return factory;
-    // }
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-        RedisStandaloneConfiguration redisStandaloneConfiguration =
-                new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("localhost");
-        redisStandaloneConfiguration.setPort(6379);
-        redisStandaloneConfiguration.setPassword(RedisPassword.none());
-        redisStandaloneConfiguration.setDatabase(0);
-        //JedisConnectionFactory factory = new JedisConnectionFactory(redisStandaloneConfiguration);
-        RedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory(redisStandaloneConfiguration);
-        return redisConnectionFactory;
-    }
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
